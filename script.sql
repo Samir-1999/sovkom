@@ -1,0 +1,18 @@
+IF (OBJECT_ID('data') IS NOT NULL) DROP TABLE dbo.data;
+
+CREATE TABLE data(
+		ACCOUNT_RK int,
+		INTERNAL_ORG_ORIGINAL_RK int, 
+		LOAN_AMOUNT decimal(20,2), 
+		APPLICATION_DT datetime2
+);
+
+BULK INSERT data
+FROM 'D:/data(1).csv'
+WITH
+(
+    FIRSTROW = 2,
+    FIELDTERMINATOR = ';', 
+    ROWTERMINATOR = '\n',
+    TABLOCK
+)
