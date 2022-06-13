@@ -23,10 +23,10 @@ AS
 
 CREATE VIEW sum 
 AS 
-	SELECT APPLICATION_DT AS Date, INTERNAL_ORG_ORIGINAL_RK AS Pos, sum(LOAN_AMOUNT) AS Сумма_выдач 
+	SELECT APPLICATION_DT AS Date, INTERNAL_ORG_ORIGINAL_RK AS Pos, sum(LOAN_AMOUNT) AS РЎСѓРјРјР°_РІС‹РґР°С‡
 	FROM data GROUP BY APPLICATION_DT, INTERNAL_ORG_ORIGINAL_RK;
 
 
-SELECT date_pos.Date, date_pos.Pos, coalesce(Сумма_выдач,0) 
+SELECT date_pos.Date, date_pos.Pos, coalesce(РЎСѓРјРјР°_РІС‹РґР°С‡,0) 
 FROM date_pos LEFT JOIN sum 
 on date_pos.date=sum.Date AND date_pos.pos=sum.Pos;
